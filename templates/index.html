@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Events</h1>
+
+    <section id="container">
+    <form action="/events" method=post id="form">
+        <h2>Add Event</h2>
+        <label for="date">Date</label><br>
+        <input type="date" name="date" id="date"><br>
+        <label for="name">Name</label><br>
+        <input type="text" name="name" id="name"><br>
+        <label for="number_of_guests">Number of Guests</label><br>
+        <input type="number" name="number_of_guests" id="number_of_guests"><br>
+        <label for="room_location">Room Location</label><br>
+        <input type="text" name="room_location" id="room_location"><br>
+        <label for="description">Descripition</label><br>
+        <textarea name="description" rows="4" cols="18"></textarea><br>
+        <label for="recurring">Recurring</label><br>
+        <input type="radio" name="recurring" id="recurring" value='True'><br>
+        <label for="not_recurring">Not Recurring</label><br>
+        <input type="radio" name="recurring" id="recurring" value=''><br>
+        <input type="submit" value="Add Event"><br>    
+    </form>
+    <div id="events_list">
+    <h2>Upcoming</h2>
+    {% for event in events %}
+        <div>
+            <p>
+                Event Name: <b> <a href='/events/{{ events.index(event) }}'>{{event.name}}</a></b><br>
+                Event Date: <b>{{event.date}}</b>
+                {% if event.recurring == True %}
+                    <p>(Recurring)</p>
+                {% endif %}
+            </p>
+        </div>
+    {% endfor %}
+    </div>
+    </section>
+{% endblock  %}

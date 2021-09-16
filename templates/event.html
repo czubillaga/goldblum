@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Event Details</h1>
+    <div id="details">
+    <p>Name: <b>{{events[index].name}}</b></p>
+    <p>Date: <b>{{events[index].date}}</b></p>
+    <p>Location: <b>{{events[index].room_location}}</b></p>
+    <p>Number of Guests: <b>{{events[index].number_of_guests}}</b></p>
+    <p>Descripition: <b>{{events[index].description}}</b></p>
+    <p>Recurring: <b>{{events[index].recurring}}</b></p><br>
+    <a id="delete-button" href="/events/delete/{{index}}">Delete</a>
+    </div>
+
+{% endblock  %}
